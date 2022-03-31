@@ -15,4 +15,21 @@ import hashlib
 
 # Global Variables
 hash_space_bits = 4
-hash_space = 2**hash_space_bits
+hash_space = 2 ** hash_space_bits
+
+
+# The class for the Sensor Network as a total entity
+class SensorNetwork:
+    pass
+
+
+# The class for each sensor node on the sensor network
+class SensorNode:
+    pass
+
+
+"""
+# main process
+"""
+if __name__ == "__main__":  # Execute these lines, only if this module is executed by itself.
+    pass
