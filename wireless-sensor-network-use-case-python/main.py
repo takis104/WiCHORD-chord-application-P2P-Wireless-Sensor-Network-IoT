@@ -27,10 +27,16 @@ class SensorNetwork:
     1. Reload Network Details
     """
     def __init__(self):
-        pass
+        self.List_of_Nodes = []  # the list of node entities on the network
+        self.Num_of_Nodes = len(self.List_of_Nodes)  # the number of total nodes in the network
+        # self.Node_Key_List = []  # a list with the keys of all the nodes (optional)
+        self.max_network_key = hash_space - 1  # the maximum key value on the network is 2^m - 1
+        self.min_network_key = 0  # the minimum key value on the network is 0
+        self.first_node = 0  # zero value initially, to be updated later
+        self.last_node = 0  # zero value initially, to be updated later
 
     def network_reload(self):
-        pass
+        pass  # to be updated
 
 
 # The class for each sensor node on the sensor network
@@ -46,16 +52,16 @@ class SensorNode:
     """
     def __init__(self):
         pass
-    
+
     def node_join(self):
         pass
-    
+
     def node_leave(self):
         pass
-    
+
     def lookup_query(self):
         pass
-    
+
     def data_reload(self):
         pass
 
