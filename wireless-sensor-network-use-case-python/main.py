@@ -60,28 +60,28 @@ class SensorNode:
         self.node_data = "data"  # the sensor data stored on the node's memory
 
     def update_finger_table(self):  # function to update the node's finger table
-        pass
+        pass  # to be updated
 
     def update_successor_predecessor(self):  # function to update the successor and predecessor of the node
-        pass
+        pass  # to be updated
 
     def find_successor(self, key):  # function to find the successor node to a lookup key
-        pass
+        pass  # to be updated
 
     def find_closest_predecessor(self, key):  # function to find the closest predecessor node of a lookup key
-        pass
+        pass  # to be updated
 
     def node_join(self, ring_id):  # function to join the node on the chord ring network
-        pass
+        pass  # to be updated
 
     def node_leave(self):  # function to remove the node on the chord ring network
-        pass
+        pass  # to be updated
 
     def lookup_query(self, value):  # function to look up a key
-        pass
+        pass  # to be updated
 
     def sensor_data_reload(self):  # function to refresh the data from the node's sensors
-        pass
+        pass  # to be updated
 
 
 """
