@@ -50,19 +50,37 @@ class SensorNode:
     3. Node Data Lookup Query
     4. Node Data Reload
     """
-    def __init__(self):
+    def __init__(self, nodeid, ringid):
+        self.node_id = nodeid  # node's ID on the network.
+        # By design, this ID derives from the line-of-sight distance of the node from the base station
+        # self.base_station_distance = 0 (input argument that will give the node id through a custom hash function)
+        self.successor_id = 0  # initially is zero, will be updated later
+        self.predecessor_id = 0  # initially is zero, will be updated later
+        self.finger_table = []  # the i-th closest neighbor nodes from the finger table.
+        self.node_data = "data"  # the sensor data stored on the node's memory
+
+    def update_finger_table(self):  # function to update the node's finger table
         pass
 
-    def node_join(self):
+    def update_successor_predecessor(self):  # function to update the successor and predecessor of the node
         pass
 
-    def node_leave(self):
+    def find_successor(self, key):  # function to find the successor node to a lookup key
         pass
 
-    def lookup_query(self):
+    def find_closest_predecessor(self, key):  # function to find the closest predecessor node of a lookup key
         pass
 
-    def data_reload(self):
+    def node_join(self, ring_id):  # function to join the node on the chord ring network
+        pass
+
+    def node_leave(self):  # function to remove the node on the chord ring network
+        pass
+
+    def lookup_query(self, value):  # function to look up a key
+        pass
+
+    def sensor_data_reload(self):  # function to refresh the data from the node's sensors
         pass
 
 
