@@ -54,6 +54,7 @@ class SensorNode:
         self.node_id = nodeid  # node's ID on the network.
         # By design, this ID derives from the line-of-sight distance of the node from the base station
         # self.base_station_distance = 0 (input argument that will give the node id through a custom hash function)
+        self.network_id = ringid  # the identification of the chord ring network that the node has joined.
         self.successor_id = 0  # initially is zero, will be updated later
         self.predecessor_id = 0  # initially is zero, will be updated later
         self.finger_table = []  # the i-th closest neighbor nodes from the finger table.
@@ -90,3 +91,4 @@ class SensorNode:
 if __name__ == "__main__":  # Execute these lines, only if this module is executed by itself.
     print("Chord Protocol Application on Wireless Sensor Networks")
     print("Implementation by Christos-Panagiotis Mpalatsouras")
+    print("ORCID: orcid.org/0000-0001-8914-7559")
