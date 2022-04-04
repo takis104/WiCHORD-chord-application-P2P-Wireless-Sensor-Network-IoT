@@ -58,6 +58,7 @@ class SensorNode:
         self.successor_id = 0  # initially is zero, will be updated later
         self.predecessor_id = 0  # initially is zero, will be updated later
         self.finger_table = []  # the i-th closest neighbor nodes from the finger table.
+        """TO-DO: Να προσθέσω και ένα δεύτερο finger table για την επιστροφή του query"""
         self.node_data = "data"  # the sensor data stored on the node's memory
 
     def update_finger_table(self):  # function to update the node's finger table
