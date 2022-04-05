@@ -50,11 +50,11 @@ class SensorNode:
     3. Node Data Lookup Query
     4. Node Data Reload
     """
-    def __init__(self, nodeid, ringid):
+    def __init__(self, nodeid, network):
         self.node_id = nodeid  # node's ID on the network.
         # By design, this ID derives from the line-of-sight distance of the node from the base station
         # self.base_station_distance = 0 (input argument that will give the node id through a custom hash function)
-        self.network_id = ringid  # the identification of the chord ring network that the node has joined.
+        self.network = network  # the identification of the chord ring network that the node has joined.
         self.successor_id = 0  # initially is zero, will be updated later
         self.predecessor_id = 0  # initially is zero, will be updated later
         self.finger_table = []  # the i-th closest neighbor nodes from the finger table.
@@ -65,7 +65,13 @@ class SensorNode:
         pass  # to be updated
 
     def update_successor_predecessor(self):  # function to update the successor and predecessor of the node
-        pass  # to be updated
+        # TO-DO: ADD The cases for the first and the last nodes
+        pos = 0  # the position of this node on the chord ring
+        for i in range(0, self.network.List_of_Nodes):
+            if self.network.List_of_Nodes[i] < self.node_id:
+                pos += 1
+        self.successor_id = self.network.List_of_Nodes[pos+1]
+        self.predecessor_id = self.network.List_of_Nodes[pos-1]
 
     def find_successor(self, key):  # function to find the successor node to a lookup key
         pass  # to be updated
