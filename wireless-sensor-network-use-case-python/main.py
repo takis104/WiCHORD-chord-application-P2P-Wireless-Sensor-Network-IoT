@@ -37,7 +37,10 @@ class SensorNetwork:
 
     def network_reload(self):
         # reload all the sensor network specifications
-        pass  # to be updated
+        self.Num_of_Nodes = len(self.List_of_Nodes)  # update num of nodes
+        self.List_of_Nodes.sort(key=lambda n: n.node_id)  # sort list of nodes by node id in ascending order
+        self.first_node = self.List_of_Nodes[0]  # update first node
+        self.last_node = self.List_of_Nodes[self.Num_of_Nodes - 1]  # update last node
 
 
 # The class for each sensor node on the sensor network
@@ -50,6 +53,9 @@ class SensorNode:
     2. Find successor / closest predecessor node
     3. Node Data Lookup Query
     4. Node Data Reload
+
+    Design Choices:
+    1. When referring to a node, refer to the node as object and not by id
     """
     def __init__(self, nodeid, network):
         self.node_id = nodeid  # node's ID on the network.
@@ -62,36 +68,65 @@ class SensorNode:
         """TO-DO: Να προσθέσω και ένα δεύτερο finger table για την επιστροφή του query"""
         self.node_data = "data"  # the sensor data stored on the node's memory
 
+        # initially populate the finger table with only the id of current node,
+        # because current node knows only itself before joining the network
+        for i in range(0, hash_space_bits):
+            self.finger_table.append(self)
+
     def update_finger_table(self):
         # function to update the node's finger table
-        pass  # to be updated
+        for i in range(0, hash_space_bits):
+            finger = self.node_id + 2 ** i
+            finger_node = self.find_successor(finger)
+            self.finger_table[i] = finger_node
 
     def update_successor_predecessor(self):
         # function to update the successor and predecessor of the node
-        if self.node_id == self.network.last_node:  # if the current node is the last node on the ring network
+        pos = 0  # the position of this node on the chord ring (zero value initially)
+        if self.node_id == self.network.last_node.node_id:  # if the current node is the last node on the network
             self.successor_id = self.network.List_of_Nodes[0]
             self.predecessor_id = self.network.List_of_Nodes[self.network.Num_of_Nodes - 2]
-        elif self.node_id == self.network.first_node:  # if the current node is the first node on the ring network
+        elif self.node_id == self.network.first_node.node_id:  # if the current node is the first node on the network
             self.successor_id = self.network.List_of_Nodes[1]
             self.predecessor_id = self.network.List_of_Nodes[self.network.Num_of_Nodes - 1]
         else:  # if the current node is any other node within the ring network
-            pos = 0  # the position of this node on the chord ring (zero value initially)
             for i in range(0, self.network.Num_of_Nodes):  # find the position of the current node by incrementing pos
-                if self.network.List_of_Nodes[i] < self.node_id:
+                if self.network.List_of_Nodes[i].node_id < self.node_id:
                     pos += 1  # increment position
-            self.successor_id = self.network.List_of_Nodes[pos+1]  # successor is the next node
-            self.predecessor_id = self.network.List_of_Nodes[pos-1]  # predecessor is the previous
+            self.successor_id = self.network.List_of_Nodes[pos + 1]  # successor is the next node
+            self.predecessor_id = self.network.List_of_Nodes[pos - 1]  # predecessor is the previous
 
     def find_successor(self, key):
         # function to find the successor node to a lookup key
-        pass  # to be updated
+        if self.node_id < key <= self.successor_id.node_id:  # key is between current node and it's successor
+            return self.successor_id
+        elif self.node_id == key:  # if key is the same as current node id
+            return self
+        elif self.node_id == self.network.last_node.node_id:  # the last node returns the first as successor
+            return self.network.first_node
+        else:  # if key is greater than the current node
+            forward_node = self.find_closest_predecessor(key)
+            return forward_node.find_successor(key)
 
     def find_closest_predecessor(self, key):
         # function to find the closest predecessor node of a lookup key
-        pass  # to be updated
+        for i in range(hash_space_bits-1, -1, -1):
+            if self.node_id < self.finger_table[i].node_id < key:
+                return self.finger_table[i]
+        return self
 
     def node_join(self, ring_id):
         # function to join the node on the chord ring network
+        # pass  # to be updated
+        self.network = ring_id
+        self.network.List_of_Nodes.append(self)
+        self.network.network_reload()
+        self.update_successor_predecessor()
+
+        # Find the finger table for the new node
+
+    def node_reload(self):
+        # update node details
         pass  # to be updated
 
     def node_leave(self):
@@ -107,11 +142,15 @@ class SensorNode:
         pass  # to be updated
 
 
+def network_build(node_list):
+    # function to build the chord sensor network. Returns the network as an entity
+    pass  # to be updated
+
+
 """
-# main process
+# main application process
 """
-if __name__ == "__main__":
-    # Execute these lines, only if this module is executed by itself.
+if __name__ == "__main__":  # Execute these lines, only if this module is executed by itself.
     print("Chord Protocol Application on Wireless Sensor Networks")
     print("Implementation by Christos-Panagiotis Mpalatsouras")
     print("ORCID: orcid.org/0000-0001-8914-7559")
