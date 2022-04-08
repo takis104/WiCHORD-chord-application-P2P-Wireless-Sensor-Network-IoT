@@ -117,13 +117,14 @@ class SensorNode:
 
     def node_join(self, ring_id):
         # function to join the node on the chord ring network
-        # pass  # to be updated
         self.network = ring_id
         self.network.List_of_Nodes.append(self)
         self.network.network_reload()
         self.update_successor_predecessor()
 
         # Find the finger table for the new node
+        # calculate the initial finger table knowing only self and successor
+        # then calculate again the finger table
 
     def node_reload(self):
         # update node details
@@ -145,6 +146,15 @@ class SensorNode:
 def network_build(node_list):
     # function to build the chord sensor network. Returns the network as an entity
     pass  # to be updated
+
+
+def calc_hash_value(input_val, space):
+    # function to calculate the hash value of an input value
+    output_val = hashlib.sha1()
+    output_val.update(str(input_val).encode())
+    output_val = int(output_val.hexdigest(), 16)
+    output_val = output_val % space
+    return output_val
 
 
 """
