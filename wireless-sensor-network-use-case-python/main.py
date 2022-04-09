@@ -14,7 +14,7 @@ Application Functionality:
 import hashlib
 
 # Global Variables
-hash_space_bits = 4
+hash_space_bits = 6
 hash_space = 2 ** hash_space_bits
 
 
@@ -57,21 +57,19 @@ class SensorNode:
     Design Choices:
     1. When referring to a node, refer to the node as object and not by id
     """
-    def __init__(self, nodeid, network):
-        self.node_id = nodeid  # node's ID on the network.
+
+    def __init__(self, node_name, network):
+        self.node_name = node_name
+        self.node_id = calc_hash_value(node_name, hash_space)  # node's ID on the network.
         # By design, this ID derives from the line-of-sight distance of the node from the base station
         # self.base_station_distance = 0 (input argument that will give the node id through a custom hash function)
         self.network = network  # the identification of the chord ring network that the node has joined.
-        self.successor_id = 0  # initially is zero, will be updated later
-        self.predecessor_id = 0  # initially is zero, will be updated later
+        self.successor_id = None  # initially is zero, will be updated later
+        self.predecessor_id = None  # initially is zero, will be updated later
         self.finger_table = []  # the i-th closest neighbor nodes from the finger table.
         """TO-DO: Να προσθέσω και ένα δεύτερο finger table για την επιστροφή του query"""
-        self.node_data = "data"  # the sensor data stored on the node's memory
-
-        # initially populate the finger table with only the id of current node,
-        # because current node knows only itself before joining the network
-        for i in range(0, hash_space_bits):
-            self.finger_table.append(self)
+        # the sensor data stored on the node's memory
+        self.node_data = {"GPS": {"Latitude": None, "Longitude": None}, "Temp": None, "Humidity": None}
 
     def update_finger_table(self):
         # function to update the node's finger table
@@ -106,7 +104,10 @@ class SensorNode:
             return self.network.first_node
         else:  # if key is greater than the current node
             forward_node = self.find_closest_predecessor(key)
-            return forward_node.find_successor(key)
+            if forward_node == self:
+                return self
+            else:
+                return forward_node.find_successor(key)
 
     def find_closest_predecessor(self, key):
         # function to find the closest predecessor node of a lookup key
@@ -121,31 +122,88 @@ class SensorNode:
         self.network.List_of_Nodes.append(self)
         self.network.network_reload()
         self.update_successor_predecessor()
+        # self.successor_id.update_successor_predecessor()
+        # self.predecessor_id.update_successor_predecessor()
 
         # Find the finger table for the new node
-        # calculate the initial finger table knowing only self and successor
-        # then calculate again the finger table
+        self.finger_table = []  # initialize finger table with empty list
 
-    def node_reload(self):
-        # update node details
-        pass  # to be updated
+        # then ask from any pre-existing (by design the first node is chosen) node to lookup fingers of this node
+        finger_keys = []
+        for i in range(0, hash_space_bits):
+            finger_key = self.node_id + 2 ** i
+            first_node = self.network.List_of_Nodes[0]
+            finger_keys.append(first_node.find_successor(finger_key))
+        # calculate the final finger table after the join operation
+        for item in range(0, hash_space_bits):
+            self.finger_table.append(finger_keys[item])
+
+        # update the details of existing nodes that point to the new node
+        self.existing_nodes_update()
+
+        print("Sensor node with name: ", self.node_name, " ID: ", self.node_id,
+              "joined the chord wireless sensor network")
+
+    def existing_nodes_update(self):
+        # update existing node details to point to the new node
+        # update nodes in the ranges: [predecessor_id-2^i+1, self_id-2^i], for i from 0 to hash_space_bits
+        for i in range(0, hash_space_bits):
+            ptr1 = self.predecessor_id.node_id - (2 ** i) + 1  # left edge of the range
+            ptr2 = self.node_id - (2 ** i)  # right edge of the range
+            if ptr1 < 0:  # if this edge of the selected range is < 0, the edge takes the value of predecessor_id + 1
+                ptr1 = (2 ** i) + ptr1
+            if ptr2 < 0:  # if this edge of the selected range is < 0, the edge takes the value of self_id + 1
+                ptr2 = (2 ** i) + ptr2
+            for node in self.network.List_of_Nodes:  # update the finger table for all the nodes on the range
+                if ptr1 <= node.node_id <= ptr2:
+                    node.update_successor_predecessor()  # update successor/predecessor of the node
+                    node.update_finger_table()  # update the finger table of the node
 
     def node_leave(self):
         # function to remove the node on the chord ring network
-        pass  # to be updated
+        self.network.List_of_Nodes.remove(self)  # remove this node from the list of nodes of the network
+        self.network.network_reload()  # reload the network variables
+        self.successor_id.update_successor_predecessor()  # update successor's details
+        self.predecessor_id.update_successor_predecessor()  # update predecessor's details
+        self.existing_nodes_update()  # update the details of existing nodes that point to this node
+        self.network = None  # clear the network id from the node attributes
+        self.successor_id = None  # clear the successor id from node attributes
+        self.predecessor_id = None  # clear the predecessor id from node attributes
+
+        print("Sensor node with name: ", self.node_name, " ID: ", self.node_id,
+              "disconnected from the chord wireless sensor network")
 
     def lookup_query(self, value):
-        # function to look up a key
-        pass  # to be updated
+        # function to look up a key (node)
+        lookup_key = calc_hash_value(value, hash_space)
+        if self != self.network.last_node or self.node_id < lookup_key:
+            resp_node = self.find_successor(lookup_key)
+        else:
+            first_node = self.network.first_node
+            resp_node = first_node.find_successor(lookup_key)
+        return resp_node
 
     def sensor_data_reload(self):
         # function to refresh the data from the node's sensors
-        pass  # to be updated
+        pass  # to be updated (with random values for the example)
+
+    def sensor_data_print(self):
+        # function to print the data from the node's sensors
+        print("Sensor Node with Name: ", self.node_name, "and with ID: ", self.node_id)
+        print("Current Sensor Values: ")
+        print("GPS:  Latitude: ", self.node_data["GPS"]["Latitude"],
+              " Longitude: ", self.node_data["GPS"]["Longitude"],
+              " Temp: ", self.node_data["Temp"], " Humidity: ", self.node_data["Humidity"])
 
 
 def network_build(node_list):
     # function to build the chord sensor network. Returns the network as an entity
-    pass  # to be updated
+    network = SensorNetwork()  # create the network instance
+    for node in node_list:  # join the nodes from the list
+        node.node_join(network)
+    for node in network.List_of_Nodes:  # update the finger tables for all the nodes
+        node.update_finger_table()
+    return network
 
 
 def calc_hash_value(input_val, space):
@@ -164,3 +222,16 @@ if __name__ == "__main__":  # Execute these lines, only if this module is execut
     print("Chord Protocol Application on Wireless Sensor Networks")
     print("Implementation by Christos-Panagiotis Mpalatsouras")
     print("ORCID: orcid.org/0000-0001-8914-7559")
+
+    node_list = []
+    node1 = SensorNode("A0E1", None)
+    node_list.append(node1)
+    node2 = SensorNode("A2B8", None)
+    node_list.append(node2)
+    node3 = SensorNode("B3F8", None)
+    node_list.append(node3)
+    node4 = SensorNode("D0F0", None)
+    node_list.append(node4)
+    net1 = network_build(node_list)
+
+    print(net1.List_of_Nodes)
