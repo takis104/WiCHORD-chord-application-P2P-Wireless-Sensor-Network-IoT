@@ -94,9 +94,11 @@ class SensorNode:
             self.successor_id = self.network.List_of_Nodes[pos + 1]  # successor is the next node
             self.predecessor_id = self.network.List_of_Nodes[pos - 1]  # predecessor is the previous
 
-    def find_successor(self, key):
+    def find_successor(self, key, query_id=None):
         # function to find the successor node to a lookup key
         if self.node_id < key <= self.successor_id.node_id:  # key is between current node and it's successor
+            if query_id is not None:
+                query_id.hops_increment()
             return self.successor_id
         elif self.node_id == key:  # if key is the same as current node id
             return self
@@ -107,6 +109,8 @@ class SensorNode:
             if forward_node == self:
                 return self
             else:
+                if query_id is not None:
+                    query_id.hops_increment()
                 return forward_node.find_successor(key)
 
     def find_closest_predecessor(self, key):
@@ -173,14 +177,21 @@ class SensorNode:
         print("Sensor node with name: ", self.node_name, " ID: ", self.node_id,
               "disconnected from the chord wireless sensor network")
 
-    def lookup_query(self, value):
+    def lookup_query(self, value, query_id=None):
         # function to look up a key (node)
         lookup_key = calc_hash_value(value, hash_space)
         if self != self.network.last_node or self.node_id < lookup_key:
-            resp_node = self.find_successor(lookup_key)
+            if query_id is not None:
+                resp_node = self.find_successor(lookup_key, query_id)
+            else:
+                resp_node = self.find_successor(lookup_key)
         else:
             first_node = self.network.first_node
-            resp_node = first_node.find_successor(lookup_key)
+            if query_id is not None:
+                query_id.hops_increment()
+                resp_node = first_node.find_successor(lookup_key, query_id)
+            else:
+                resp_node = first_node.find_successor(lookup_key)
         return resp_node
 
     def sensor_data_reload(self):
@@ -194,6 +205,18 @@ class SensorNode:
         print("GPS:  Latitude: ", self.node_data["GPS"]["Latitude"],
               " Longitude: ", self.node_data["GPS"]["Longitude"],
               " Temp: ", self.node_data["Temp"], " Humidity: ", self.node_data["Humidity"])
+
+
+class Query:
+    """
+    Class Query: Stores useful information about a query such as the type and the num of node hops to resolve the query
+    """
+    def __init__(self, query_type):
+        self.query_type = query_type
+        self.query_hops = 0  # variable to calculate the num of hops for a query to be resolved
+
+    def hops_increment(self):
+        self.query_hops += 1  # increment the hops between nodes for the query execution
 
 
 def network_build(node_list):
@@ -233,5 +256,11 @@ if __name__ == "__main__":  # Execute these lines, only if this module is execut
     node4 = SensorNode("D0F0", None)
     node_list.append(node4)
     net1 = network_build(node_list)
+    net1.network_reload()
+
+    q1 = Query("lookup")
+    l = node2.lookup_query("B3F8", q1)
+    print(l.node_id)
+    print(q1.query_type, q1.query_hops)
 
     print(net1.List_of_Nodes)
