@@ -117,7 +117,9 @@ class SensorNode:
             else:
                 if query_id is not None:
                     query_id.hops_increment()
-                return forward_node.find_successor(key)
+                    return forward_node.find_successor(key, query_id)
+                else:
+                    return forward_node.find_successor(key)
 
     def find_closest_predecessor(self, key):
         # function to find the closest predecessor node of a lookup key
@@ -260,7 +262,7 @@ if __name__ == "__main__":  # Execute these lines, only if this module is execut
     print("\nScanning for nodes to add to the network...")
     node_list = []
     for n in range(0, num_of_nodes + 1):
-        mac_address = secrets.token_hex(6)
+        mac_address = secrets.token_hex(6)  # Generate random MAC addresses
         node_list.append(SensorNode(mac_address, None))
         print("Found node with MAC Address: ", mac_address)
     # Sort the list of nodes by NODE ID, TO-DO: Find out a way to build the network without sorting (dynamic)
