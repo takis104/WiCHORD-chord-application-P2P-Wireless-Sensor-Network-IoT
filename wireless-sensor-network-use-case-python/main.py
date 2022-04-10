@@ -12,10 +12,14 @@ Application Functionality:
 
 # Import Python Modules
 import hashlib
+import random
+import secrets
 
 # Global Variables
-hash_space_bits = 6
+hash_space_bits = 10
 hash_space = 2 ** hash_space_bits
+
+num_of_nodes = 40
 
 
 # The class for the Sensor Network as a total entity
@@ -69,7 +73,9 @@ class SensorNode:
         self.finger_table = []  # the i-th closest neighbor nodes from the finger table.
         """TO-DO: Να προσθέσω και ένα δεύτερο finger table για την επιστροφή του query"""
         # the sensor data stored on the node's memory
-        self.node_data = {"GPS": {"Latitude": None, "Longitude": None}, "Temp": None, "Humidity": None}
+        self.node_data = {"GPS": {"Latitude": 0, "Longitude": 0}, "Temp": 0, "Humidity": 0}
+
+        self.sensor_data_reload()  # give initial sensor values to the node
 
     def update_finger_table(self):
         # function to update the node's finger table
@@ -195,8 +201,13 @@ class SensorNode:
         return resp_node
 
     def sensor_data_reload(self):
-        # function to refresh the data from the node's sensors
-        pass  # to be updated (with random values for the example)
+        # function to refresh the data from the node's sensors (with random values for the example)
+        # On the sensor network real implementation,
+        # this operation will read the values from the sensors and update the nodes memory
+        self.node_data["GPS"]["Latitude"] = random.randint(30, 40)
+        self.node_data["GPS"]["Longitude"] = random.randint(30, 40)
+        self.node_data["Temp"] = random.randint(10, 40)
+        self.node_data["Humidity"] = random.randint(0, 100)
 
     def sensor_data_print(self):
         # function to print the data from the node's sensors
@@ -246,21 +257,60 @@ if __name__ == "__main__":  # Execute these lines, only if this module is execut
     print("Implementation by Christos-Panagiotis Mpalatsouras")
     print("ORCID: orcid.org/0000-0001-8914-7559")
 
+    print("\nScanning for nodes to add to the network...")
     node_list = []
-    node1 = SensorNode("A0E1", None)
-    node_list.append(node1)
-    node2 = SensorNode("A2B8", None)
-    node_list.append(node2)
-    node3 = SensorNode("B3F8", None)
-    node_list.append(node3)
-    node4 = SensorNode("D0F0", None)
-    node_list.append(node4)
+    for n in range(0, num_of_nodes + 1):
+        mac_address = secrets.token_hex(6)
+        node_list.append(SensorNode(mac_address, None))
+        print("Found node with MAC Address: ", mac_address)
+    # Sort the list of nodes by NODE ID, TO-DO: Find out a way to build the network without sorting (dynamic)
+    node_list.sort(key=lambda node: node.node_id)
+
+    print("\nAdding nodes to the network...")
     net1 = network_build(node_list)
-    net1.network_reload()
 
-    q1 = Query("lookup")
-    l = node2.lookup_query("B3F8", q1)
-    print(l.node_id)
-    print(q1.query_type, q1.query_hops)
+    opt1 = int(
+        input(
+            "\nOptions: \n"
+            "1. Log-in to one of the available nodes \n"
+            "2. Register a new node \n"
+            "Select one of the above (1-2): "
+        )
+    )
+    current_node = None
+    if opt1 == 1:
+        selected_id = int(input("Select one Node ID from the above: "))
+        for node in net1.List_of_Nodes:
+            if node.node_id == selected_id:
+                current_node = node
+    elif opt1 == 2:
+        new_node_name = input("Enter the MAC address of the new node: ")
+        new_node = SensorNode(new_node_name, None)
+        new_node.node_join(net1)
+        for node in net1.List_of_Nodes:  # update the finger tables for all the nodes
+            node.update_finger_table()
+        current_node = new_node
+    print("\nYou are connected to the Node with MAC: ", current_node.node_name, " and ID: ", current_node.node_id, "\n")
 
-    print(net1.List_of_Nodes)
+    opt2 = int(
+        input(
+            "\nOptions: \n"
+            "1. Print current sensor values \n"
+            "2. Refresh sensor values \n"
+            "3. Lookup values from other node \n"
+            "Select one of the above (1-3): "
+        )
+    )
+    if opt2 == 1:
+        current_node.sensor_data_print()
+    elif opt2 == 2:
+        current_node.sensor_data_reload()
+        current_node.sensor_data_print()
+    elif opt2 == 3:
+        lookup_value = input("Enter node MAC Address to lookup: ")
+        q1 = Query("lookup")
+        lookup_node = current_node.lookup_query(lookup_value, q1)
+        print("\nFound node with ID: ", lookup_node.node_id)
+        lookup_node.sensor_data_print()
+        print("\nQuery type: ", q1.query_type,
+              "\nTotal node hops to resolve this query: ", q1.query_hops)
