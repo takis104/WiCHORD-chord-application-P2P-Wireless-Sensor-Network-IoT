@@ -131,6 +131,7 @@ class SensorNode:
     def node_join(self, ring_id):
         # function to join the node on the chord ring network
         self.network = ring_id
+        # TO-DO: Να κάνω increment κατά ένα το Node ID αν υπάρχει σύγκρουση μεταξύ κόμβων
         self.network.List_of_Nodes.append(self)
         self.network.network_reload()
         self.update_successor_predecessor()
@@ -188,7 +189,7 @@ class SensorNode:
     def lookup_query(self, value, query_id=None):
         # function to look up a key (node)
         lookup_key = calc_hash_value(value, hash_space)
-        if self != self.network.last_node or self.node_id < lookup_key:
+        if self != self.network.last_node and self.node_id < lookup_key:
             if query_id is not None:
                 resp_node = self.find_successor(lookup_key, query_id)
             else:
@@ -230,6 +231,11 @@ class Query:
 
     def hops_increment(self):
         self.query_hops += 1  # increment the hops between nodes for the query execution
+
+
+"""
+Useful standalone functions
+"""
 
 
 def network_build(node_list):
