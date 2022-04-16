@@ -73,7 +73,16 @@ class SensorNode:
         self.finger_table = []  # the i-th closest neighbor nodes from the finger table.
         """TO-DO: Να προσθέσω και ένα δεύτερο finger table για την επιστροφή του query"""
         # the sensor data stored on the node's memory
-        self.node_data = {"GPS": {"Latitude": 0, "Longitude": 0}, "Temp": 0, "Humidity": 0}
+        self.node_data = \
+            {
+                "GPS":
+                    {
+                        "Latitude": 0,
+                        "Longitude": 0
+                    },
+                "Temp": 0,
+                "Humidity": 0
+            }
 
         self.sensor_data_reload()  # give initial sensor values to the node
 
