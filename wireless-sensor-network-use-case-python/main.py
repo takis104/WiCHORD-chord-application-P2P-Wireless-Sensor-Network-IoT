@@ -270,6 +270,11 @@ def calc_hash_value(input_val, space):
 # main application process
 """
 if __name__ == "__main__":  # Execute these lines, only if this module is executed by itself.
+    print("+-----------------------------------+")
+    print("|                                   |")
+    print("|             Wi-CHORD              |")
+    print("|                                   |")
+    print("+-----------------------------------+")
     print("Chord Protocol Application on Wireless Sensor Networks")
     print("Implementation by Christos-Panagiotis Mpalatsouras")
     print("ORCID: orcid.org/0000-0001-8914-7559")
