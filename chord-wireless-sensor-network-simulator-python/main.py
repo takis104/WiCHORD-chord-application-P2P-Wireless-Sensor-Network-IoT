@@ -16,10 +16,10 @@ import random
 import secrets
 
 # Global Variables
-hash_space_bits = 6
+hash_space_bits = 8
 hash_space = 2 ** hash_space_bits
 
-num_of_nodes = 40
+num_of_nodes = 9
 
 
 # The class for the Sensor Network as a total entity
@@ -33,7 +33,7 @@ class SensorNetwork:
     def __init__(self):
         self.List_of_Nodes = []  # the list of node entities on the network
         self.Num_of_Nodes = len(self.List_of_Nodes)  # the number of total nodes in the network
-        # self.Node_Key_List = []  # a list with the keys of all the nodes (optional)
+        self.Node_Key_List = []  # a list with the keys of all the nodes (optional)
         self.max_network_key = hash_space - 1  # the maximum key value on the network is 2^m - 1
         self.min_network_key = 0  # the minimum key value on the network is 0
         self.first_node = 0  # zero value initially, to be updated later
@@ -140,8 +140,17 @@ class SensorNode:
     def node_join(self, ring_id):
         # function to join the node on the chord ring network
         self.network = ring_id
+        """
         # TO-DO: Να κάνω increment κατά ένα το Node ID αν υπάρχει σύγκρουση μεταξύ κόμβων
-        self.network.List_of_Nodes.append(self)
+        # (διότι δημιουργούνται προβλήματα)
+        # Ωστόσο, παρατηρώ ότι εάν κάνω increment το ID, πρώτον μπορεί κάποιοι κόμβοι να λάβουν ID μεγαλύτερο από το 
+        # μέγιστο επιτρεπόμενο σύμφωνα με τις προδιαγραφές του Chord και δεύτερον, θα υπάρχει πρόβλημα μετά με την 
+        # εύρεση ενός κλειδιού διότι η hash function θα επιστρέφει άλλη τιμή
+        while self.node_id in self.network.Node_Key_List:
+            self.node_id += 1
+        """
+        self.network.List_of_Nodes.append(self)  # add the node entity to the network's list of nodes
+        self.network.Node_Key_List.append(self.node_id)  # add the ID of the node to the network's list of node IDs
         self.network.network_reload()
         self.update_successor_predecessor()
         # self.successor_id.update_successor_predecessor()
