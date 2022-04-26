@@ -5,5 +5,5 @@ The case study of this project is to customize the Chord Protocol in a Wireless 
 
 ## Contents:
 - Simulator Application of the Chord Protocol overlay on sensor networks in Python
-- Chord protocol overlay for LoRaWAN Wireless Sensor Networks in Arduino C++
-  * Supported LoRa MCU Board: LILYGO TTGO T-Beam v1.1
+- Chord protocol overlay for LoRaWAN Wireless Sensor Networks in Arduino C++ (or MicroPython)
+  * Supported LoRa MCU Board: LILYGO TTGO T-Beam v1.1 ESP32
