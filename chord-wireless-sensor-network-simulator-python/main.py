@@ -16,7 +16,7 @@ import random
 import secrets
 
 # Global Variables
-hash_space_bits = 10
+hash_space_bits = 6
 hash_space = 2 ** hash_space_bits
 
 num_of_nodes = 40
