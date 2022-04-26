@@ -1,4 +1,4 @@
-# Wi-CHORD: Chord Protocol application on a P2P Wireless Sensor Network - IoT
+# Wi-CHORD: Chord Protocol application on a P2P LoRaWAN Wireless Sensor Network - IoT
 Advanced p2p Wireless Sensor Network (WSN) System Based on the Chord Protocol and LoRa Wireless Technology
 
 The case study of this project is to customize the Chord Protocol in a Wireless Sensor Network environment.
