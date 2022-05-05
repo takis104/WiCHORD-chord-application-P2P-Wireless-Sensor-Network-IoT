@@ -2,6 +2,8 @@
 * Supported LoRa MCU: TTGO T-BEAM v1.1
 * Implemented by: Christos-Panagiotis Balatsouras
 * ORCID: https://orcid.org/0000-0001-8914-7559
+*
+* Implementation Notes: Each node knows only it's neighbor nodes.
 */
 
 void setup() {
