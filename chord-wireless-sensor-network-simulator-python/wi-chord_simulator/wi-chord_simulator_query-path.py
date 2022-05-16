@@ -49,9 +49,16 @@ if __name__ == "__main__":  # Execute these lines, only if this module is execut
     print("Implementation by Christos-Panagiotis Mpalatsouras")
     print("ORCID: orcid.org/0000-0001-8914-7559")
 
-    results = []
+    print("\nExperiment: Measuring the Average Query Path Length per total number of Nodes\n")
 
-    for total_nodes in range(20, 520, 2):
+    total_runs_per_experiment = int(input("Please Specify the total runs per experiment: "))
+    minimum_nodes = int(input("Please Specify the minimum num of nodes on the network: "))
+    maximum_nodes = int(input("Please Specify the maximum num of nodes on the network: "))
+    step = int(input("Please specify the total nodes increment step: "))
+
+    results = []  # list to store the results
+
+    for total_nodes in range(minimum_nodes, maximum_nodes, step):
         num_of_nodes = total_nodes
         print("Running Experiment with total nodes: ", num_of_nodes)
 
@@ -101,7 +108,17 @@ if __name__ == "__main__":  # Execute these lines, only if this module is execut
 
     # Export results to CSV
     with open('wichord-sim_experiment1.csv', mode='w', newline='') as results_file:
-        results_writer = csv.writer(results_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_NONNUMERIC)
+        results_writer = csv.writer(results_file, delimiter=';', quotechar='"', quoting=csv.QUOTE_NONNUMERIC)
         results_writer.writerow(["Total_nodes", "Average_Path_Length"])
         for item in results:
             results_writer.writerow([item["Nodes"], item["Avg_Path"]])
+
+    # Export results to TXT for MatplotLib
+    with open('wichord-sim_experiment1.txt', mode='w', newline='') as results_file:
+        nodes_num = []
+        avg_path = []
+        for item in results:
+            nodes_num.append(item["Nodes"])
+            avg_path.append(item["Avg_Path"])
+        results_file.write("%s\n" % nodes_num)
+        results_file.write("%s\n" % avg_path)
