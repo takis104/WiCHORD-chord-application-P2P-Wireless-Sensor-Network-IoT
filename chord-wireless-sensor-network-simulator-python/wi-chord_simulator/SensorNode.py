@@ -42,8 +42,8 @@ class SensorNode:
         # By design, this ID derives from the line-of-sight distance of the node from the base station
         # self.base_station_distance = 0 (input argument that will give the node id through a custom hash function)
         self.network = network  # the identification of the chord ring network that the node has joined.
-        self.successor_id = None  # initially is zero, will be updated later
-        self.predecessor_id = None  # initially is zero, will be updated later
+        self.successor_id = None  # initially is None, will be updated later
+        self.predecessor_id = None  # initially is None, will be updated later
         self.finger_table = []  # the i-th closest neighbor nodes from the finger table.
         """
         TO-DO: Να προσθέσω και ένα δεύτερο finger table για την επιστροφή του query
@@ -149,8 +149,8 @@ class SensorNode:
         # update the details of existing nodes that point to the new node
         self.existing_nodes_update()
 
-        print("Sensor node with name: ", self.node_name, " ID: ", self.node_id,
-              "joined the chord wireless sensor network")
+        # print("Sensor node with name: ", self.node_name, " ID: ", self.node_id,
+        #      "joined the chord wireless sensor network")
 
     def existing_nodes_update(self):
         # update existing node details to point to the new node

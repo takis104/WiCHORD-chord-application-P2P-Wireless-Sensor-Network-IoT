@@ -18,7 +18,7 @@ from network_build import network_build
 from SensorNode import SensorNode
 
 # Global Variables
-num_of_nodes = 9
+num_of_nodes = 100
 
 
 class Query:
