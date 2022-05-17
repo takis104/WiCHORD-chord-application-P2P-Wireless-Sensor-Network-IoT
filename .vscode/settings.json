@@ -1,0 +1,5 @@
+{
+    "python.analysis.extraPaths": [
+        "./chord-wireless-sensor-network-simulator-python/wi-chord_simulator"
+    ]
+}

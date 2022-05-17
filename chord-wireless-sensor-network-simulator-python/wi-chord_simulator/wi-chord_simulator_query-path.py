@@ -60,7 +60,7 @@ if __name__ == "__main__":  # Execute these lines, only if this module is execut
 
     for total_nodes in range(minimum_nodes, maximum_nodes, step):
         num_of_nodes = total_nodes
-        print("Running Experiment with total nodes: ", num_of_nodes)
+        print("\nRunning Experiment with total nodes: ", num_of_nodes)
 
         print("\nScanning for nodes to add to the network...")
         node_list = []
@@ -97,9 +97,8 @@ if __name__ == "__main__":  # Execute these lines, only if this module is execut
             q1 = Query("lookup")
             lookup_node = current_node.lookup_query(lookup_value, q1)
             print("\nFound node with ID: ", lookup_node.node_id)
-            lookup_node.sensor_data_print()
-            print("\nQuery type: ", q1.query_type,
-                  "\nTotal node hops to resolve this query: ", q1.query_hops)
+            # lookup_node.sensor_data_print()
+            # print("\nQuery type: ", q1.query_type, "\nTotal node hops to resolve this query: ", q1.query_hops)
             sum_of_lengths = sum_of_lengths + q1.query_hops
 
         local_average_path = sum_of_lengths / total_runs_per_experiment
@@ -107,12 +106,14 @@ if __name__ == "__main__":  # Execute these lines, only if this module is execut
         results.append(local_result)
 
     # Export results to CSV
+    print("\nExporting results to CSV...\n")
     with open('wichord-sim_experiment1.csv', mode='w', newline='') as results_file:
         results_writer = csv.writer(results_file, delimiter=';', quotechar='"', quoting=csv.QUOTE_NONNUMERIC)
         results_writer.writerow(["Total_nodes", "Average_Path_Length"])
         for item in results:
             results_writer.writerow([item["Nodes"], item["Avg_Path"]])
 
+    print("\nExporting results to TXT...\n")
     # Export results to TXT for MatplotLib
     with open('wichord-sim_experiment1.txt', mode='w', newline='') as results_file:
         nodes_num = []
