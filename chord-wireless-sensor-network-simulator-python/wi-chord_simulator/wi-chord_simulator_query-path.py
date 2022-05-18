@@ -12,6 +12,7 @@ Application Functionality:
 
 # Import Python Modules
 import csv
+import matplotlib.pyplot as plt
 import secrets
 import random
 
@@ -113,8 +114,8 @@ if __name__ == "__main__":  # Execute these lines, only if this module is execut
         for item in results:
             results_writer.writerow([item["Nodes"], item["Avg_Path"]])
 
-    print("\nExporting results to TXT...\n")
     # Export results to TXT for MatplotLib
+    print("\nExporting results to TXT...\n")
     with open('wichord-sim_experiment1.txt', mode='w', newline='') as results_file:
         nodes_num = []
         avg_path = []
@@ -123,3 +124,13 @@ if __name__ == "__main__":  # Execute these lines, only if this module is execut
             avg_path.append(item["Avg_Path"])
         results_file.write("%s\n" % nodes_num)
         results_file.write("%s\n" % avg_path)
+
+    # Plot the simulation results
+    plt.plot(nodes_num, avg_path, label='Average Query Path Length')
+
+    plt.ylabel("Average Lookup Query Path Length")
+    plt.xlabel("Total Number of Nodes on the Network")
+    plt.title("Average Lookup Query Path Length per Total Number of Nodes")
+    plt.legend()
+
+    plt.show()
