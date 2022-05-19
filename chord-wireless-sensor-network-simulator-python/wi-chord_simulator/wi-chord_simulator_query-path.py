@@ -12,6 +12,7 @@ Application Functionality:
 
 # Import Python Modules
 import csv
+import matplotlib as mpl
 import matplotlib.pyplot as plt
 import secrets
 import random
@@ -126,11 +127,16 @@ if __name__ == "__main__":  # Execute these lines, only if this module is execut
         results_file.write("%s\n" % avg_path)
 
     # Plot the simulation results
+    mpl.rcParams['axes.linewidth'] = 2
+    mpl.rcParams['lines.linewidth'] = 3
+    mpl.rcParams['xtick.labelsize'] = 20
+    mpl.rcParams['ytick.labelsize'] = 20
+
     plt.plot(nodes_num, avg_path, label='Average Query Path Length')
 
-    plt.ylabel("Average Lookup Query Path Length")
-    plt.xlabel("Total Number of Nodes on the Network")
-    plt.title("Average Lookup Query Path Length per Total Number of Nodes")
-    plt.legend()
+    plt.ylabel("Average Lookup Query Path Length", fontsize=22)
+    plt.xlabel("Total Number of Nodes on the Network", fontsize=22)
+    plt.title("Average Lookup Query Path Length per Total Number of Nodes", fontsize=24)
+    plt.legend(prop={'size': 26})
 
     plt.show()
