@@ -15,7 +15,15 @@ If you find this work useful, please cite the above mentioned publication as fol
 C. -P. Balatsouras, A. Karras, C. Karras, D. Tsolis and S. Sioutas, "WiCHORD: A Chord Protocol Application on P2P LoRa Wireless Sensor Networks," 2022 13th International Conference on Information, Intelligence, Systems & Applications (IISA), 2022, pp. 1-8, doi: 10.1109/IISA56318.2022.9904339.
 
 ### BiBTeX
-@INPROCEEDINGS{9904339,  author={Balatsouras, Christos-Panagiotis and Karras, Aristeidis and Karras, Christos and Tsolis, Dimitrios and Sioutas, Spyros},  booktitle={2022 13th International Conference on Information, Intelligence, Systems & Applications (IISA)},   title={WiCHORD: A Chord Protocol Application on P2P LoRa Wireless Sensor Networks},   year={2022},  volume={},  number={},  pages={1-8},  doi={10.1109/IISA56318.2022.9904339}}
+@INPROCEEDINGS{9904339,  
+author={Balatsouras, Christos-Panagiotis and Karras, Aristeidis and Karras, Christos and Tsolis, Dimitrios and Sioutas, Spyros},  
+booktitle={2022 13th International Conference on Information, Intelligence, Systems & Applications (IISA)},   
+title={WiCHORD: A Chord Protocol Application on P2P LoRa Wireless Sensor Networks},   
+year={2022},  
+volume={},  
+number={},  
+pages={1-8},  
+doi={10.1109/IISA56318.2022.9904339}}
 
 ## Contents:
 - Simulator Application of the Chord Protocol overlay on sensor networks in Python
