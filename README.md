@@ -26,6 +26,10 @@ pages={1-8},
 doi={10.1109/IISA56318.2022.9904339}}
 
 ## Contents:
-- Simulator Application of the Chord Protocol overlay on sensor networks in Python
+- Simulator Application of the Chord Protocol overlay on sensor networks in Python, with the following contents:
+  * Chord Network Build Operation
+  * Node Join/Leave Operation
+  * Node Lookup Query Operation
+  * Calculation of Lookup Query Path Length
 - Chord protocol overlay for LoRa Wireless Sensor Networks in Arduino C++
   * Supported LoRa MCU Board: LILYGO TTGO T-Beam v1.1 ESP32
