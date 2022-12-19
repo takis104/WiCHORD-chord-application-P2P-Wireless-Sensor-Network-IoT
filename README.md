@@ -16,6 +16,9 @@ Christos-Panagiotis Balatsouras, Aristeidis Karras, Christos Karras, Dimitrios T
 ### Publication's Abstract
 On the modern era of Internet of Things (IoT) and Industry 4.0 there is a growing need for reliable wireless long range communications. LoRa is an emerging technology for effective long range communications which can be directly applied to IoT applications. Wireless sensor networks (WSNs) are by far an efficient infrastructure where sensors act as nodes and exchange information among themselves. Distributed applications such as Peer-to-Peer (P2P) networks are inextricably linked with Distributed Hash Tables (DHTs) whereabouts DHTs offer effective and speedy data indexing. A Distributed Hash Table structure known as the Chord algorithm enables the lookup operation of nodes which is a major algorithmic function of P2P networks. In the context of this paper, the inner workings of Chord protocol are highlighted along with an introduced modified version of it for WSNs. Additionally, we adapt the proposed method on LoRa networks where sensors function as nodes. The outcomes of the proposed method are encouraging as per complexity and usability and future directions of this work include the deployment of the proposed method in a large scale environment, security enhancements and distributed join, leave and lookup operations.
 
+### Publication's Presentation
+https://www.youtube.com/watch?v=yVesxUl2fR4
+
 ## Cite this work
 If you find this work useful, please cite the above mentioned publication as follows:
 
