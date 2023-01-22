@@ -10,6 +10,8 @@ The publication is available on IEEE Xplore: https://ieeexplore.ieee.org/documen
 
 Publisher: IEEE
 
+<a href="https://www.researchgate.net/profile/Christos-Panagiotis-Balatsouras/publication/361745127_WiCHORD_A_Chord_Protocol_Application_on_P2P_LoRa_Wireless_Sensor_Networks/links/63387d83ff870c55cef0a565/WiCHORD-A-Chord-Protocol-Application-on-P2P-LoRa-Wireless-Sensor-Networks.pdf"> Read the publication on ResearchGate </a>
+
 ### Publication's Authors
 Christos-Panagiotis Balatsouras, Aristeidis Karras, Christos Karras, Dimitrios Tsolis, Spyros Sioutas
 
