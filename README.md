@@ -21,13 +21,13 @@ On the modern era of Internet of Things (IoT) and Industry 4.0 there is a growin
 ### Publication's Presentation
 https://www.youtube.com/watch?v=yVesxUl2fR4
 
-## Cite this work
+### Cite this work
 If you find this work useful, please cite the above mentioned publication as follows:
 
-### Plain Text Citation
+#### Plain Text Citation
 C. -P. Balatsouras, A. Karras, C. Karras, D. Tsolis and S. Sioutas, "WiCHORD: A Chord Protocol Application on P2P LoRa Wireless Sensor Networks," 2022 13th International Conference on Information, Intelligence, Systems & Applications (IISA), 2022, pp. 1-8, doi: 10.1109/IISA56318.2022.9904339.
 
-### BiBTeX
+#### BiBTeX
 @INPROCEEDINGS{9904339,  
 author={Balatsouras, Christos-Panagiotis and Karras, Aristeidis and Karras, Christos and Tsolis, Dimitrios and Sioutas, Spyros},  
 booktitle={2022 13th International Conference on Information, Intelligence, Systems & Applications (IISA)},   
