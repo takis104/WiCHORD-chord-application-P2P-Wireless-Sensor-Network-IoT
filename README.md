@@ -1,7 +1,7 @@
 # WiCHORD: A Chord Protocol Application on P2P LoRa Wireless Sensor Networks
 P2P Wireless Sensor Network (WSN) System Based on the Chord Protocol from DHTs and LoRa Wireless Technology
 
-The case study of this project is to customize the Chord Protocol on a Wireless Sensor Network environment.
+The case study of this project is to customize the Chord Protocol on a Wireless Sensor Network environment, first in terms of simulation and then in terms of implementation.
 
 ## Publication
 This solution was proposed on a conference paper on the IEEE IISA 2022 Conference, held at Ionial University on July 18 2022, in Corfu Greece.
