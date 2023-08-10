@@ -3,7 +3,7 @@ P2P Wireless Sensor Network (WSN) System Based on the Chord Protocol from DHTs a
 
 The case study of this project is to customize the Chord Protocol on a Wireless Sensor Network environment, first in terms of simulation and then in terms of implementation.
 
-## Publication
+## Publication: Conference Paper on IEEE IISA 2022
 This solution was proposed on a conference paper on the IEEE IISA 2022 Conference, held at Ionial University on July 18 2022, in Corfu Greece.
 
 The publication is available on IEEE Xplore: https://ieeexplore.ieee.org/document/9904339
