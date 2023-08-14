@@ -1,4 +1,5 @@
 # Advanced Chord Implementation in Python
+# WiCHORD+ Wireless Sensor Network Overlay for LoRa WSNs on IoT Applications
 # Created by Christos-Panagiotis Balatsouras
 # ORCID: https://orcid.org/0000-0001-8914-7559
 
@@ -8,6 +9,7 @@ Application Functionality:
 1. Node Join / Leave
 2. Network Build
 3. Data Lookup Query
+4. WiCHORD Evaluation on LoRa WSNs
 
 ****
 FILE DESCRIPTION: SensorNetwork class definition
