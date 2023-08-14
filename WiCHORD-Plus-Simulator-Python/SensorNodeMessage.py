@@ -15,6 +15,14 @@ Application Functionality:
 FILE DESCRIPTION: SensorNode class definition
 """
 
+# import Python modules
+# ...
+
+# Import other modules from this project
+# ...
+
+
+# The class for each message passed from one sensor node to another on the network
 class Message:
     """
     Class Message:
@@ -23,5 +31,9 @@ class Message:
     To be added later...
     """
 
-    def __int__(self, message_id):
-        pass
+    def __int__(self, message_type, network_id, message_origin, message_destination):
+        self.query_type = message_type
+        self.net_id = network_id
+        self.origin_node = message_origin
+        self.destination_node = message_destination
+
