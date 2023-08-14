@@ -1,4 +1,5 @@
 # Advanced Chord Implementation in Python
+# WiCHORD+ Wireless Sensor Network Overlay for LoRa WSNs on IoT Applications
 # Created by Christos-Panagiotis Balatsouras
 # ORCID: https://orcid.org/0000-0001-8914-7559
 
@@ -8,6 +9,7 @@ Application Functionality:
 1. Node Join / Leave
 2. Network Build
 3. Data Lookup Query
+4. WiCHORD Evaluation on LoRa WSNs
 
 ****
 FILE DESCRIPTION: SensorNode class definition
@@ -45,6 +47,7 @@ class SensorNode:
         self.successor_id = None  # initially is None, will be updated later
         self.predecessor_id = None  # initially is None, will be updated later
         self.finger_table = []  # the i-th closest neighbor nodes from the finger table.
+        self.contacts_num = 0  # the total number of other nodes that this node is aware of (finger table size + predecessor)
         """
         TO-DO: Να προσθέσω και ένα δεύτερο finger table για την επιστροφή του query
         Ίσως να μη χρειαστεί καθώς το Chord είναι virtual protocol
@@ -60,7 +63,6 @@ class SensorNode:
                 "Temp": 0,
                 "Humidity": 0
             }
-
         self.sensor_data_reload()  # give initial sensor values to the node
 
     def update_finger_table(self):
@@ -149,8 +151,10 @@ class SensorNode:
         # update the details of existing nodes that point to the new node
         self.existing_nodes_update()
 
-        # print("Sensor node with name: ", self.node_name, " ID: ", self.node_id,
-        #      "joined the chord wireless sensor network")
+        """
+        print("Sensor node with name: ", self.node_name, " ID: ", self.node_id,
+              "joined the chord wireless sensor network")
+        """
 
     def existing_nodes_update(self):
         # update existing node details to point to the new node
@@ -214,3 +218,8 @@ class SensorNode:
         print("GPS:  Latitude: ", self.node_data["GPS"]["Latitude"],
               " Longitude: ", self.node_data["GPS"]["Longitude"],
               " Temp: ", self.node_data["Temp"], " Humidity: ", self.node_data["Humidity"])
+
+    def update_total_num_of_contacts(self):
+        # function to update the total number of nodes that this node acknowledges.
+        # To be added soon...
+        self.contacts_num = len(self.finger_table) + 1 # number of entries on the finger table plus the predecessor node
