@@ -222,4 +222,4 @@ class SensorNode:
     def update_total_num_of_contacts(self):
         # function to update the total number of nodes that this node acknowledges.
         # To be added soon...
-        self.contacts_num = len(self.finger_table) + 1 # number of entries on the finger table plus the predecessor node
+        self.contacts_num = len(set(self.finger_table)) + 1 # number of entries on the finger table plus the predecessor node
