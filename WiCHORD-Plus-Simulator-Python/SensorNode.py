@@ -148,6 +148,9 @@ class SensorNode:
         for item in range(0, hash_space_bits):
             self.finger_table.append(finger_keys[item])
 
+        # update the total number of node IDs stored in node's memory
+        self.update_total_num_of_contacts()
+
         # update the details of existing nodes that point to the new node
         self.existing_nodes_update()
 
@@ -170,6 +173,7 @@ class SensorNode:
                 if ptr1 <= node.node_id <= ptr2:
                     node.update_successor_predecessor()  # update successor/predecessor of the node
                     node.update_finger_table()  # update the finger table of the node
+                    node.update_total_num_of_contacts()  # update the total number of other node IDs stored in memory
 
     def node_leave(self):
         # function to remove the node on the chord ring network
@@ -220,6 +224,13 @@ class SensorNode:
               " Temp: ", self.node_data["Temp"], " Humidity: ", self.node_data["Humidity"])
 
     def update_total_num_of_contacts(self):
-        # function to update the total number of nodes that this node acknowledges.
-        # To be added soon...
-        self.contacts_num = len(set(self.finger_table)) + 1 # number of entries on the finger table plus the predecessor node
+        # function to update the total number of nodes that this node acknowledges and stores in memory.
+        # each node acknowledges it's predecessor and it's finger table
+        if self.predecessor_id not in self.finger_table:
+            self.contacts_num = len(
+                set(self.finger_table)
+            ) + 1 # number of entries on the finger table plus the predecessor node
+        else:
+            self.contacts_num = len(
+                set(self.finger_table)
+            )  # number of entries on the finger table plus the predecessor node
