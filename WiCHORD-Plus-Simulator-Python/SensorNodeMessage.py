@@ -12,7 +12,7 @@ Application Functionality:
 4. WiCHORD Evaluation on LoRa WSNs
 
 ****
-FILE DESCRIPTION: SensorNode class definition
+FILE DESCRIPTION: Message class definition
 """
 
 # import Python modules
@@ -31,9 +31,11 @@ class Message:
     To be added later...
     """
 
-    def __int__(self, message_type, network_id, message_origin, message_destination):
+    def __int__(self, message_type, network_id, routing_flag, message_origin, message_forwarded_node, message_destination):
         self.query_type = message_type
         self.net_id = network_id
+        self.wichord_routing_flag = routing_flag
         self.origin_node = message_origin
+        self.intermediate_node = message_forwarded_node
         self.destination_node = message_destination
 
