@@ -116,7 +116,7 @@ class SensorNode:
                 return self.finger_table[i]
         return self
 
-    def node_join(self, ring_id):
+    def node_join(self, ring_id, query_id=None):
         # function to join the node on the chord ring network
         self.network = ring_id
         """
@@ -152,14 +152,14 @@ class SensorNode:
         self.update_total_num_of_contacts()
 
         # update the details of existing nodes that point to the new node
-        self.existing_nodes_update()
+        self.existing_nodes_update(query_id=query_id)
 
         """
         print("Sensor node with name: ", self.node_name, " ID: ", self.node_id,
               "joined the chord wireless sensor network")
         """
 
-    def existing_nodes_update(self):
+    def existing_nodes_update(self, query_id=None):
         # update existing node details to point to the new node
         # update nodes in the ranges: [predecessor_id-2^i+1, self_id-2^i], for i from 0 to hash_space_bits
         for i in range(0, hash_space_bits):
@@ -174,14 +174,16 @@ class SensorNode:
                     node.update_successor_predecessor()  # update successor/predecessor of the node
                     node.update_finger_table()  # update the finger table of the node
                     node.update_total_num_of_contacts()  # update the total number of other node IDs stored in memory
+                    if query_id is not None:  # for a linked join/leave query metrics
+                        query_id.nodes_increment()  # increment the num of nodes updated for this join/leave operation
 
-    def node_leave(self):
+    def node_leave(self, query_id=None):
         # function to remove the node on the chord ring network
         self.network.List_of_Nodes.remove(self)  # remove this node from the list of nodes of the network
         self.network.network_reload()  # reload the network variables
         self.successor_id.update_successor_predecessor()  # update successor's details
         self.predecessor_id.update_successor_predecessor()  # update predecessor's details
-        self.existing_nodes_update()  # update the details of existing nodes that point to this node
+        self.existing_nodes_update(query_id=query_id)  # update the details of existing nodes that point to this node
         self.network = None  # clear the network id from the node attributes
         self.successor_id = None  # clear the successor id from node attributes
         self.predecessor_id = None  # clear the predecessor id from node attributes

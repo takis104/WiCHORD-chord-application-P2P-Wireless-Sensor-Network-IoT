@@ -27,6 +27,12 @@ class Message:
     """
     Class Message:
     Data: Message Attributes
+    - message type: WiCHORD Query type (lookup, join, leave) or Sensors Data POST to Gateway
+    - network id: the ID of this WSN
+    - routing flag: if true, this packet is for WiCHORD routing
+    - origin node: the sensor node that initially sent the query
+    - intermediate node: the node to which the query was forwarded in the search of the destination
+    - destination node: the requested sensor node
     Operations:
     To be added later...
     """
