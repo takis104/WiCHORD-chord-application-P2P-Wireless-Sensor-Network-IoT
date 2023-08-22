@@ -14,5 +14,5 @@ FILE DESCRIPTION: Global Variables
 """
 
 # Global Variables
-hash_space_bits = 20
+hash_space_bits = 30
 hash_space = 2 ** hash_space_bits
