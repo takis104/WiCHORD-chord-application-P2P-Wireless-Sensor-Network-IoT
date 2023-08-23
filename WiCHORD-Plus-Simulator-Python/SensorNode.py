@@ -138,12 +138,17 @@ class SensorNode:
         # Find the finger table for the new node
         self.finger_table = []  # initialize finger table with empty list
 
-        # then ask from any pre-existing (by design the first node is chosen) node to lookup fingers of this node
+        # then ask from any pre-existing (by design a random node is chosen) node to lookup fingers of this node
+        random_node = random.choice(self.network.List_of_Nodes) # pick a random node
+        # if the there is more than one node in the network and the random node is the new node, pick another one
+        if len(self.network.List_of_Nodes) > 1:
+            while random_node == self:
+                random_node = random.choice(self.network.List_of_Nodes) # pick a random node
+        # populate finger table
         finger_keys = []
         for i in range(0, hash_space_bits):
             finger_key = self.node_id + 2 ** i
-            first_node = self.network.List_of_Nodes[0]
-            finger_keys.append(first_node.find_successor(finger_key))
+            finger_keys.append(random_node.find_successor(finger_key))
         # calculate the final finger table after the join operation
         for item in range(0, hash_space_bits):
             self.finger_table.append(finger_keys[item])
@@ -175,7 +180,7 @@ class SensorNode:
                     node.update_finger_table()  # update the finger table of the node
                     node.update_total_num_of_contacts()  # update the total number of other node IDs stored in memory
                     if query_id is not None:  # for a linked join/leave query metrics
-                        query_id.nodes_increment()  # increment the num of nodes updated for this join/leave operation
+                        query_id.nodes_increment(node.node_id)  # increment the num of nodes updated for this join/leave operation
 
     def node_leave(self, query_id=None):
         # function to remove the node on the chord ring network
@@ -188,8 +193,10 @@ class SensorNode:
         self.successor_id = None  # clear the successor id from node attributes
         self.predecessor_id = None  # clear the predecessor id from node attributes
 
+        """
         print("Sensor node with name: ", self.node_name, " ID: ", self.node_id,
               "disconnected from the chord wireless sensor network")
+        """
 
     def lookup_query(self, value, query_id=None):
         # function to look up a key (node)
