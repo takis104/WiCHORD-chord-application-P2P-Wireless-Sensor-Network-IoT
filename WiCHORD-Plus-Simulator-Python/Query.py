@@ -24,6 +24,7 @@ class Query:
         self.query_type = query_type
         self.query_hops = 0  # counter for the num of hops for a query to be resolved
         self.nodes_involved = 0  # counter for the num of nodes involved for a join/leave operation to be completed
+        self.nodes_involved_list = []  # list for the IDs of nodes involved for a join/leave operation to be completed
 
     def hops_increment(self):
         """
@@ -31,8 +32,9 @@ class Query:
         """
         self.query_hops += 1  # increment the hops between nodes for the query execution
 
-    def nodes_increment(self):
+    def nodes_increment(self, n_id):
         """
         Function to increment the num of nodes involved for a join/leave operation to be completed
         """
-        self.nodes_involved += 1  # increment the num of nodes involved
+        self.nodes_involved_list.append(n_id) # add the new node
+        self.nodes_involved = len(set(self.nodes_involved_list))  # count the num of unique nodes involved
