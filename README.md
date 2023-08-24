@@ -38,12 +38,17 @@ number={},
 pages={1-8},  
 doi={10.1109/IISA56318.2022.9904339}}
 
+## Publication: MDPI Sensors Special Issue 2023
+To be added later...
+
 ## Repository Contents (Code)
 - Simulator Application of the Chord Protocol overlay on sensor networks in Python, with the following contents:
   * Chord Network Build Operation
   * Node Join/Leave Operation
   * Node Lookup Query Operation
   * Calculation of Lookup Query Path Length
+  * (WiCHORD+): Calculation of total number of Node IDs (contacts) stored for each sensor node on the network
+  * (WiCHORD+): Calculation of the average number of sensor nodes involved on a Join/Leave/Lookup Query resolution
 - Chord protocol overlay for LoRa Wireless Sensor Networks in Arduino C++
   * Supported LoRa MCU Board: LILYGO TTGO T-Beam v1.1 ESP32
 
