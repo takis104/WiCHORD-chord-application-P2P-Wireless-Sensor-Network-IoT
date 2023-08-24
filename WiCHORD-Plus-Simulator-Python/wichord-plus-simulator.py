@@ -31,10 +31,10 @@ from Query import Query
 # Global Variables
 # Set the appearance parameters for the plots
 mpl.rcParams['figure.figsize'] = [25, 15]
-mpl.rcParams['xtick.labelsize'] = 30
-mpl.rcParams['ytick.labelsize'] = 30
-mpl.rcParams['axes.titlesize'] = 40
-mpl.rcParams['axes.labelsize'] = 25
+mpl.rcParams['xtick.labelsize'] = 20
+mpl.rcParams['ytick.labelsize'] = 20
+mpl.rcParams['axes.titlesize'] = 35
+mpl.rcParams['axes.labelsize'] = 30
 
 # Function Definitions
 def create_random_wsn(num_of_nodes):
@@ -262,7 +262,7 @@ if __name__ == "__main__":
         """
 
         # Perform the simulation experiment
-        sum_of_involved_nodes = 1  # the sum of nodes involved for a query to be resolved (start with one to count the initial node)
+        sum_of_involved_nodes = 1  # the sum of nodes involved for a query to be resolved (start with one to count the initial node) (involved_nodes = hops + 1)
         for i in range(0, total_runs_per_experiment):
             selected_node = random.choice(list_of_nodes)  # select a random node of the network to look up
             while selected_node == active_node:  # select a node other than the current
