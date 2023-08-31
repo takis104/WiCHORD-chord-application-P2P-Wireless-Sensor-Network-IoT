@@ -242,4 +242,4 @@ class SensorNode:
         else:
             self.contacts_num = len(
                 set(self.finger_table)
-            )  # number of entries on the finger table plus the predecessor node
+            )  # number of entries on the finger table
