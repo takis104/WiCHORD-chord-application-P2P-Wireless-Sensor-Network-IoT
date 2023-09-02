@@ -3,6 +3,21 @@ P2P Wireless Sensor Network (WSN) System Based on the Chord Protocol from DHTs a
 
 The case study of this project is to customize the Chord Protocol on a Wireless Sensor Network environment, first in terms of simulation and then in terms of implementation.
 
+**This work is published in the following publications:**
+1. **Conference Paper on IEEE IISA 2022**, entitled: "WiCHORD: A Chord Protocol Application on P2P LoRa Wireless Sensor Networks" (C. -P. Balatsouras, A. Karras, C. Karras, D. Tsolis and S. Sioutas, "WiCHORD: A Chord Protocol Application on P2P LoRa Wireless Sensor Networks," 2022 13th International Conference on Information, Intelligence, Systems & Applications (IISA), Corfu, Greece, 2022, pp. 1-8, doi: 10.1109/IISA56318.2022.9904339.)
+2. **Journal Paper on MDPI Sensors**, entitled: "WiCHORD+: A Scalable and Sustainable Chord-based Ecosystem for Smart Agriculture Applications"
+
+## Repository Contents (Code)
+- Simulator Application of the Chord Protocol overlay on sensor networks in Python, with the following contents:
+  * Chord Network Build Operation
+  * Node Join/Leave Operation
+  * Node Lookup Query Operation
+  * Calculation of Lookup Query Path Length
+  * (WiCHORD+): Calculation of total number of Node IDs (contacts) stored for each sensor node on the network
+  * (WiCHORD+): Calculation of the average number of sensor nodes involved on a Join/Leave/Lookup Query resolution
+- Chord protocol overlay for LoRa Wireless Sensor Networks in Arduino C++
+  * Supported LoRa MCU Board: LILYGO TTGO T-Beam v1.1 ESP32
+
 ## 1. Conference Paper on IEEE IISA 2022: "WiCHORD: A Chord Protocol Application on P2P LoRa Wireless Sensor Networks"
 This solution was proposed on a conference paper entitled "WiCHORD: A Chord Protocol Application on P2P LoRa Wireless Sensor Networks" on the IEEE IISA 2022 Conference, held at Ionial University on July 18 2022, in Corfu Greece.
 
@@ -40,17 +55,6 @@ doi={10.1109/IISA56318.2022.9904339}}
 
 ## 2. Journal Paper on MDPI Sensors: "WiCHORD+: A Scalable and Sustainable Chord-based Ecosystem for Smart Agriculture Applications"
 To be added later...
-
-## Repository Contents (Code)
-- Simulator Application of the Chord Protocol overlay on sensor networks in Python, with the following contents:
-  * Chord Network Build Operation
-  * Node Join/Leave Operation
-  * Node Lookup Query Operation
-  * Calculation of Lookup Query Path Length
-  * (WiCHORD+): Calculation of total number of Node IDs (contacts) stored for each sensor node on the network
-  * (WiCHORD+): Calculation of the average number of sensor nodes involved on a Join/Leave/Lookup Query resolution
-- Chord protocol overlay for LoRa Wireless Sensor Networks in Arduino C++
-  * Supported LoRa MCU Board: LILYGO TTGO T-Beam v1.1 ESP32
 
 ## Future Work
 To be added later...
