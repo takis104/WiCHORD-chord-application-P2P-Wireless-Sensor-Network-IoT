@@ -19,6 +19,14 @@ The case study of this project is to customize the Chord Protocol on a Wireless 
 <!-- - Chord protocol overlay for LoRa Wireless Sensor Networks in Arduino Embedded C++
   * Supported LoRa MCU Board: LILYGO TTGO T-Beam v1.1 ESP32 -->
 
+### Required Python Packages
+pandas, matplotlib, hashlib, random, secrets, csv
+
+### Simulator Python Scripts Functionality
+- WiCHORD-Simulator-Python-Implementation/wi-chord_simulator.py: Main simulator that tests the WiCHORD network build functionality and supports lookup queries.
+- WiCHORD-Simulator-Python-Implementation/wi-chord_simulator_query-path.py: Runs the experiment of measuring the query path length per total nodes on a WiCHORD Network.
+- WiCHORD-Plus-Simulator-Python/wichord-plus-simulator.py: Runs the experiments of key load balancing evaluation on the nodes of a WiCHORD Network alongside with the number of involved nodes to perform the join/leave/lookup operations per total network nodes in order to evaluate the energy efficiency of the WiCHORD Protocol overlay for Wireless Sensor Networks.
+
 ## 1. Conference Paper on IEEE IISA 2022: "WiCHORD: A Chord Protocol Application on P2P LoRa Wireless Sensor Networks"
 This solution was proposed on a conference paper entitled "WiCHORD: A Chord Protocol Application on P2P LoRa Wireless Sensor Networks" on the IEEE IISA 2022 Conference, held at Ionial University on July 18 2022, in Corfu Greece.
 
