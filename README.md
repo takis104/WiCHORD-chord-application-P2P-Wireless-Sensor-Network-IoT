@@ -1,5 +1,5 @@
 # WiCHORD: A Chord Protocol Adaptation on P2P Wireless Sensor Networks powered by LoRa Wireless Communication Technology
-P2P Wireless Sensor Network (WSN) System Based on the Chord Protocol from DHTs and LoRa Wireless Technology
+P2P Wireless Sensor Network (WSN) Overlay, based on the Chord Protocol from DHTs and LoRa Wireless Technology
 
 The case study of this project is to customize the Chord Protocol on a Wireless Sensor Network environment, first in terms of simulation and then in terms of implementation.
 
