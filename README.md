@@ -62,5 +62,5 @@ number={},
 pages={1-8},  
 doi={10.1109/IISA56318.2022.9904339}}
 
-## 2. Journal Paper on MDPI Sensors: "WiCHORD+: A Scalable and Sustainable Chord-based Ecosystem for Smart Agriculture Applications"
-To be updated after the paper publication...
+## 2. Journal Paper on MDPI Sensors: "WiCHORD+: A Scalable, Sustainable and P2P Chord-based Ecosystem for Smart Agriculture Applications"
+Paper accepted on MDPI Sensors, on November 27, 2023; to be updated after the paper's publication...
