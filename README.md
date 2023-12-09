@@ -5,7 +5,7 @@ The case study of this project is to customize the Chord Protocol on a Wireless 
 
 **This work is published in the following publications:**
 1. **Conference Paper on IEEE IISA 2022**, entitled: "WiCHORD: A Chord Protocol Application on P2P LoRa Wireless Sensor Networks" (C. -P. Balatsouras, A. Karras, C. Karras, D. Tsolis and S. Sioutas, "WiCHORD: A Chord Protocol Application on P2P LoRa Wireless Sensor Networks," 2022 13th International Conference on Information, Intelligence, Systems & Applications (IISA), Corfu, Greece, 2022, pp. 1-8, doi: 10.1109/IISA56318.2022.9904339.)
-2. **Journal Paper on MDPI Sensors**, entitled: "WiCHORD+: A Scalable and Sustainable Chord-based Ecosystem for Smart Agriculture Applications" (Publication pending)
+2. **Journal Paper on MDPI Sensors**, entitled: "WiCHORD+: A Scalable and Sustainable Chord-based Ecosystem for Smart Agriculture Applications" (Balatsouras, C.-P.; Karras, A.; Karras, C.; Karydis, I.; Sioutas, S. WiCHORD+: A Scalable, Sustainable, and P2P Chord-Based Ecosystem for Smart Agriculture Applications. Sensors 2023, 23, 9486. https://doi.org/10.3390/s23239486)
 
 ## Repository Contents (Code)
 - Simulator Application of the Chord Protocol overlay on sensor networks in Python, with the following contents:
@@ -46,13 +46,25 @@ On the modern era of Internet of Things (IoT) and Industry 4.0 there is a growin
 https://www.youtube.com/watch?v=yVesxUl2fR4
 
 ## 2. Journal Paper on MDPI Sensors: "WiCHORD+: A Scalable, Sustainable and P2P Chord-based Ecosystem for Smart Agriculture Applications"
-Paper accepted on MDPI Sensors, on November 27, 2023; to be updated after the paper's publication...
+The extended version of this solution was proposed on a journal paper entitled: "WiCHORD+: A Scalable, Sustainable, and P2P Chord-Based Ecosystem for Smart Agriculture Applications", which was published on the MDPI Sensors Open Access Journal.
+
+This publication is available to read online on MDPI: https://www.mdpi.com/1424-8220/23/23/9486
+
+Publisher: MDPI
+
+### Publication's Authors
+Christos-Panagiotis Balatsouras, Aristeidis Karras, Christos Karras, Ioannis Karydis, Spyros Sioutas
+
+### Publication's Abstract
+In the evolving landscape of Industry 4.0, the convergence of peer-to-peer (P2P) systems, LoRa-enabled wireless sensor networks (WSNs), and distributed hash tables (DHTs) represents a major advancement that enhances sustainability in the modern agriculture framework and its applications. In this study, we propose a P2P Chord-based ecosystem for sustainable and smart agriculture applications, inspired by the inner workings of the Chord protocol. The node-centric approach of WiCHORD+ is a standout feature, streamlining operations in WSNs and leading to more energy-efficient and straightforward system interactions. Instead of traditional key-centric methods, WiCHORD+ is a node-centric protocol that is compatible with the inherent characteristics of WSNs. This unique design integrates seamlessly with distributed hash tables (DHTs), providing an efficient mechanism to locate nodes and ensure robust data retrieval while reducing energy consumption. Additionally, by utilizing the MAC address of each node in data routing, WiCHORD+ offers a more direct and efficient data lookup mechanism, essential for the timely and energy-efficient operation of WSNs. While the increasing dependence of smart agriculture on cloud computing environments for data storage and machine learning techniques for real-time prediction and analytics continues, frameworks like the proposed WiCHORD+ appear promising for future IoT applications due to their compatibility with modern devices and peripherals. Ultimately, the proposed approach aims to effectively incorporate LoRa, WSNs, DHTs, cloud computing, and machine learning, by providing practical solutions to the ongoing challenges in the current smart agriculture landscape and IoT applications.
 
 ## Cite this work
 If you find this work useful, please cite the above mentioned publications as follows:
 
 ### Plain Text Citations
 - C. -P. Balatsouras, A. Karras, C. Karras, D. Tsolis and S. Sioutas, "WiCHORD: A Chord Protocol Application on P2P LoRa Wireless Sensor Networks," 2022 13th International Conference on Information, Intelligence, Systems & Applications (IISA), 2022, pp. 1-8, doi: 10.1109/IISA56318.2022.9904339.
+- Balatsouras, C.-P.; Karras, A.; Karras, C.; Karydis, I.; Sioutas, S. WiCHORD+: A Scalable, Sustainable, and P2P Chord-Based Ecosystem for Smart Agriculture Applications. Sensors 2023, 23, 9486. https://doi.org/10.3390/s23239486 
 
 ### BiBTeX Citations
  - @INPROCEEDINGS{9904339, author={Balatsouras, Christos-Panagiotis and Karras, Aristeidis and Karras, Christos and Tsolis, Dimitrios and Sioutas, Spyros}, booktitle={2022 13th International Conference on Information, Intelligence, Systems & Applications (IISA)}, title={WiCHORD: A Chord Protocol Application on P2P LoRa Wireless Sensor Networks}, year={2022}, volume={}, number={}, pages={1-8}, doi={10.1109/IISA56318.2022.9904339}}
+ - @Article{s23239486, AUTHOR = {Balatsouras, Christos-Panagiotis and Karras, Aristeidis and Karras, Christos and Karydis, Ioannis and Sioutas, Spyros}, TITLE = {WiCHORD+: A Scalable, Sustainable, and P2P Chord-Based Ecosystem for Smart Agriculture Applications}, JOURNAL = {Sensors}, VOLUME = {23}, YEAR = {2023}, NUMBER = {23}, ARTICLE-NUMBER = {9486}, URL = {https://www.mdpi.com/1424-8220/23/23/9486}, ISSN = {1424-8220}, DOI = {10.3390/s23239486}}
