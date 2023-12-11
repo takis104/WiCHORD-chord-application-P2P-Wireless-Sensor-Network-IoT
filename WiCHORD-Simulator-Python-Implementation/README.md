@@ -1,2 +1,9 @@
 # WiCHORD Simulator
-Readme file content to be added later...
+
+## Functionality
+Simulator Application of the Chord Protocol overlay on sensor networks in Python, consisting of the following:
+- Sensor Network & Sensor Node Instance Classes Definition
+- Chord Network Build Operation
+- Node Join/Leave Operation
+- Node Lookup Query Operation
+- Calculation of Lookup Query Path Length per total number of nodes on the network
