@@ -16,8 +16,6 @@ The case study of this project is to customize the Chord Protocol on a Wireless 
   * (WiCHORD): Calculation of Lookup Query Path Length
   * (WiCHORD+): Calculation of total number of Node IDs (contacts) stored for each sensor node on the network
   * (WiCHORD+): Calculation of the average number of sensor nodes involved on a Join/Leave/Lookup Query resolution
-<!-- - Chord protocol overlay for LoRa Wireless Sensor Networks in Arduino Embedded C++
-  * Supported LoRa MCU Board: LILYGO TTGO T-Beam v1.1 ESP32 -->
 
 ### Required Python Packages
 pandas, matplotlib, hashlib, random, secrets, csv
