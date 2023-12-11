@@ -8,7 +8,7 @@ The case study of this project is to customize the Chord Protocol on a Wireless 
 2. **Journal Paper on MDPI Sensors**, entitled: "WiCHORD+: A Scalable and Sustainable Chord-based Ecosystem for Smart Agriculture Applications" (Balatsouras, C.-P.; Karras, A.; Karras, C.; Karydis, I.; Sioutas, S. WiCHORD+: A Scalable, Sustainable, and P2P Chord-Based Ecosystem for Smart Agriculture Applications. Sensors 2023, 23, 9486. https://doi.org/10.3390/s23239486)
 
 ## Repository Contents (Code)
-- Simulator Application of the Chord Protocol overlay on sensor networks in Python, with the following contents:
+- Simulator Application of the Chord Protocol overlay on sensor networks in Python, consisting of the following:
   * (WiCHORD): Sensor Network & Sensor Node Instance Classes Definition
   * (WiCHORD): Chord Network Build Operation
   * (WiCHORD): Node Join/Leave Operation
