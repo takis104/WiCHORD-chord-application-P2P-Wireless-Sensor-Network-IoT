@@ -7,6 +7,11 @@ The case study of this project is to customize the Chord Protocol on a Wireless 
 1. **Conference Paper on IEEE IISA 2022**, entitled: "WiCHORD: A Chord Protocol Application on P2P LoRa Wireless Sensor Networks" (C. -P. Balatsouras, A. Karras, C. Karras, D. Tsolis and S. Sioutas, "WiCHORD: A Chord Protocol Application on P2P LoRa Wireless Sensor Networks," 2022 13th International Conference on Information, Intelligence, Systems & Applications (IISA), Corfu, Greece, 2022, pp. 1-8, doi: 10.1109/IISA56318.2022.9904339.)
 2. **Journal Paper on MDPI Sensors**, entitled: "WiCHORD+: A Scalable and Sustainable Chord-based Ecosystem for Smart Agriculture Applications" (Balatsouras, C.-P.; Karras, A.; Karras, C.; Karydis, I.; Sioutas, S. WiCHORD+: A Scalable, Sustainable, and P2P Chord-Based Ecosystem for Smart Agriculture Applications. Sensors 2023, 23, 9486. https://doi.org/10.3390/s23239486)
 
+## Project Creator
+The code for this project is developed by:
+
+Christos-Panagiotis Balatsouras, PhD Candidate @ Computer Engineering & Informatics Department (CEID), University of Patras
+
 ## Repository Contents (Code)
 - Simulator Application of the Chord Protocol overlay on sensor networks in Python, consisting of the following:
   * (WiCHORD): Sensor Network & Sensor Node Instance Classes Definition
