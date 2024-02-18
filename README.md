@@ -25,7 +25,12 @@ Christos-Panagiotis Balatsouras, PhD Candidate @ Computer Engineering & Informat
   * (WiCHORD+): Calculation of the average number of sensor nodes involved on a Join/Leave/Lookup Query resolution
 
 ### Required Python Packages
-pandas, matplotlib, hashlib, random, secrets, csv
+1. pandas
+2. matplotlib
+3. hashlib
+4. random
+5. secrets
+6. csv
 
 ### Simulator Python Scripts Functionality
 - WiCHORD-Simulator-Python-Implementation/wi-chord_simulator.py: Main simulator that tests the WiCHORD network build functionality and supports lookup queries.
