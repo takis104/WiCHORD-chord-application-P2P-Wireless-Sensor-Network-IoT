@@ -12,7 +12,9 @@ The case study of this project is to customize the Chord P2P Protocol from Distr
 ## Project Creator
 The code for this project is developed by:
 
-Christos-Panagiotis Balatsouras, PhD Candidate @ Computer Engineering & Informatics Department (CEID), University of Patras
+Christos-Panagiotis Balatsouras, 
+
+PhD Candidate @ Computer Engineering & Informatics Department (CEID), University of Patras
 
 ## Repository Contents (Code)
 - Simulator Application of the Chord Protocol overlay on sensor networks in Python, consisting of the following:
