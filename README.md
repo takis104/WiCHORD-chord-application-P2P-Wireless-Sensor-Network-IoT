@@ -1,5 +1,5 @@
 # WiCHORD: A Chord Protocol Adaptation on P2P Wireless Sensor Networks powered by LoRa Wireless Communication Technology
-[![License: GPL v2](https://img.shields.io/badge/License-GPL_v2-blue.svg)](LICENCE)
+[![License: GPL v2](https://img.shields.io/badge/License-GPL_v2-blue.svg)](https://github.com/takis104/WiCHORD-chord-application-P2P-Wireless-Sensor-Network-IoT/blob/main/LICENSE)
 
 **Topic:** P2P Wireless Sensor Network (WSN) Overlay, based on the Chord peer-to-peer Protocol from Distributed Hash Tables (DHTs) and LoRa Wireless Technology
 
